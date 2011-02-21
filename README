@@ -1,0 +1,9 @@
+This is the README for colourchange.sty.
+
+Do not use a theme with this package. It will break things.
+
+Add the package to your preamble, and avoid other styling/theme/colour commands unless you know what you're doing.
+
+Currently only supports default blue to red transition on a slide by slide basis.
+
+Currently licensed under GPL v3. http://www.gnu.org/licenses/gpl-3.0.html

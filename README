@@ -3,7 +3,15 @@ This is the README for colourchange.sty.
 Do not use a theme with this package. It will break things.
 
 Add the package to your preamble, and avoid other styling/theme/colour commands unless you know what you're doing.
+You need to compile twice for it to work.
 
 Currently only supports default blue to red transition on a slide by slide basis.
 
 Currently licensed under GPL v3. http://www.gnu.org/licenses/gpl-3.0.html
+
+To do list
+----------
+Draft option (to speed up compilation when drafting).
+User picks the colours to transition between.
+User toggles frame or slide transitions.
+Make sure it works with all base inner/outer themes.

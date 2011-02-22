@@ -50,12 +50,20 @@
 }
 
 % The colour setting commands don't like having counter names in them directly, so this workaround is necessary...
+
 \definecolor{dred}{rgb}{0.9,0.15,0.15}
+\def\first@colour{blue}
+\def\second@colour{dred}
 \newcommand\setstruccol[1]{%
-  \setbeamercolor*{structure}{fg=dred!#1!blue}
+  \setbeamercolor*{structure}{fg=\second@colour!#1!\first@colour}
 }
 
 \newcommand\setstruccolx{\setstruccol{\the\value{cc@slidefrac}}}
+
+\newcommand\selectcolourchanges[2]{%
+  \def\first@colour{#1}%
+  \def\second@colour{#2}}
+
 
 % At the beginning of the document, we need to set the colours up for the first time...
 

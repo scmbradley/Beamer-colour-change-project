@@ -1,8 +1,7 @@
 This is the README for colourchange.sty.
 
-Do not use a theme with this package. It will break things. (Coming soon: not breaking with other themes)
-
-Add the package to your preamble, and avoid other styling/theme/colour commands unless you know what you're doing.
+Don't use a colour theme or full theme (which sometimes call colour themes).
+You should be OK calling inner themes and outer themes separately (although some look better than others at the moment: see bottom of readme).
 You need to compile twice for it to work.
 
 %------------------------------
@@ -36,3 +35,5 @@ To do list
 ----------
 User toggles frame or slide transitions.
 Make sure it works with all base inner/outer themes.
+ - smoothbars, split, shadow, tree outer themes uses palette quaternary (b/w)
+ - smoothtree doesn't seem to use structure colours at all.

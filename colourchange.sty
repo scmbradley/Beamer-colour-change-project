@@ -8,9 +8,43 @@
 \RequirePackage{etoolbox}
 \RequirePackage{calc}
 
-\useoutertheme[footline=authorinstitutetitle]{miniframes}
+% Some new ifs I use
 
+\newif\ifcc@defaultstyle
+\newif\ifcc@slidechange
+\newif\ifcc@framechange
+\newif\ifcc@draft
+\newif\ifcc@final
+
+\DeclareOption{defaultstyle}{%
+\cc@defaultstyletrue%
+}
+
+\DeclareOption{slidechange}{
+\cc@slidechangetrue
+}
+
+\DeclareOption{framechange}{
+\cc@framechangetrue
+}
+
+\DeclareOption{draft}{
+\cc@drafttrue
+}
+
+\DeclareOption{final}{
+\cc@finaltrue
+}
+
+\ProcessOptions\relax
+
+% Default option
+
+\ifcc@defaultstyle
+\useoutertheme[footline=authorinstitutetitle]{miniframes}
 \useinnertheme{rectangles}
+\fi
+
 
 % This chunky command basically makes sure that all the colours are set each time the structure colour changes.
 
@@ -31,14 +65,26 @@
 }
 
 % All the work is bascially done by a few counters
+% Some are for with the slidechange option, and some for the frame change option
+% I'll let you guess which are which.
+
 \newcounter{cc@slidefrac}
 \newcounter{cc@slidetot}
 \newcounter{cc@currslide}
 \setcounter{cc@currslide}{1}
+
+\newcounter{cc@framefrac}
+\newcounter{cc@frametot}
+\newcounter{cc@currframe}
+\setcounter{cc@currframe}{1}
+
 % At the start of each slide, step the counter, and set the fraction counter
+\ifcc@draft
+\else
 \def\beamer@checkframetitle{\stepcounter{cc@currslide}%
   \fractionate%
   \@ifnextchar\bgroup\beamer@inlineframetitle{}}
+\fi
 
 % This command  sets the fraction counter for the above command.
 % Why do I have to set cc@slidetot here too? Well, if I put it in \AtBeginDocument, it seems to break...

@@ -8,10 +8,14 @@ You need to compile twice for it to work.
 The command \selectcolourchanges{first}{second} takes two arguments: the starting colour and the final colour of the presentation.
 These should be colours already understood by beamer.
 
+There is a draft option. 
+Pass this to the package or to the document class, if you want to to do other magic elsewhere with beamer.
+There is also a final option, so you can have draft doing magic elsewhere but still have colourchanges.
+Although, I've just noticed that the draft option passed to the document class changes quite a lot of stuff, so I expect the final option is fairly useless.
+
 Currently licensed under GPL v3. http://www.gnu.org/licenses/gpl-3.0.html
 
 To do list
 ----------
-Draft option (to speed up compilation when drafting).
 User toggles frame or slide transitions.
 Make sure it works with all base inner/outer themes.

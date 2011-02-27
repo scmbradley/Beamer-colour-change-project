@@ -1,17 +1,34 @@
 This is the README for colourchange.sty.
 
-Do not use a theme with this package. It will break things.
+Do not use a theme with this package. It will break things. (Coming soon: not breaking with other themes)
 
 Add the package to your preamble, and avoid other styling/theme/colour commands unless you know what you're doing.
 You need to compile twice for it to work.
 
-The command \selectcolourchanges{first}{second} takes two arguments: the starting colour and the final colour of the presentation.
-These should be colours already understood by beamer.
+%------------------------------
+% Summary of commands
+%------------------------------
 
-There is a draft option. 
-Pass this to the package or to the document class, if you want to to do other magic elsewhere with beamer.
-There is also a final option, so you can have draft doing magic elsewhere but still have colourchanges.
-Although, I've just noticed that the draft option passed to the document class changes quite a lot of stuff, so I expect the final option is fairly useless.
+\selectcolourchanges{first}{second} takes two arguments: the starting colour and the final colour of the presentation.
+These should be colours already understood by beamer.
+Beamer uses xcolor, so you can define colours with xcolor commands and then use them in \selectcolourchanges.
+That's what I do for the defaults.
+
+%------------------------------
+% Summary of options
+%------------------------------
+
+defaultstyle
+Turns on default inner and outerthemes.
+Or rather, it will do soo.
+
+draft
+The draft option turns off colour changing.
+Good for speeding up compilation when drafting.
+
+%------------------------------
+% Other stuff
+%------------------------------
 
 Currently licensed under GPL v3. http://www.gnu.org/licenses/gpl-3.0.html
 

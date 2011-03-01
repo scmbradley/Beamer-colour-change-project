@@ -22,10 +22,12 @@
 
 \DeclareOption{slidechange}{
 \cc@slidechangetrue
+\cc@framechangefalse
 }
 
 \DeclareOption{framechange}{
 \cc@framechangetrue
+\cc@slidechangefalse
 }
 
 \DeclareOption{draft}{
@@ -79,6 +81,7 @@
 \setcounter{cc@currframe}{1}
 
 % At the start of each slide, step the counter, and set the fraction counter
+% Only if the draft mode is off.
 \ifcc@draft
 \else
 \def\beamer@checkframetitle{\stepcounter{cc@currslide}%

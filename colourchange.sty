@@ -16,6 +16,11 @@
 \newif\ifcc@draft
 \newif\ifcc@final
 
+%By default, this should be true
+
+\cc@slidechangetrue
+
+
 \DeclareOption{defaultstyle}{%
 \cc@defaultstyletrue%
 }
@@ -84,19 +89,32 @@
 % Only if the draft mode is off.
 \ifcc@draft
 \else
-\def\beamer@checkframetitle{\stepcounter{cc@currslide}%
-  \fractionate%
-  \@ifnextchar\bgroup\beamer@inlineframetitle{}}
+\ifcc@slidechange
+
+  \newcommand\fractionate{
+    \setcounter{cc@slidetot}{\inserttotalslidenumber}
+    \setcounter{cc@slidefrac}{100 * \value{cc@currslide} / \value{cc@slidetot}}
+  }
+  
+  \def\beamer@checkframetitle{\stepcounter{cc@currslide}%
+    \fractionate%
+    \@ifnextchar\bgroup\beamer@inlineframetitle{}}
+  
+  \fi
+
+  \ifcc@framechange
+    \newcommand\fractionate{
+      \setcounter{cc@slidetot}{\inserttotalframenumber}
+      \setcounter{cc@slidefrac}{100 * \insertframenumber / \value{cc@slidetot}}
+    }
+
+    \preto\frame{\fractionate\setcolours}
+  \fi
 \fi
 
-% This command  sets the fraction counter for the above command.
+% This command sets the fraction counter for the above command.
 % Why do I have to set cc@slidetot here too? Well, if I put it in \AtBeginDocument, it seems to break...
 % \inserttotalslidenumber is defined at the end (lines 61 et seq.)
-
-\newcommand\fractionate{
-  \setcounter{cc@slidetot}{\inserttotalslidenumber}
-  \setcounter{cc@slidefrac}{100 * \value{cc@currslide} / \value{cc@slidetot}}
-}
 
 % The colour setting commands don't like having counter names in them directly, so this workaround is necessary...
 

@@ -29,6 +29,12 @@ draft
 The draft option turns off colour changing.
 Good for speeding up compilation when drafting.
 
+slidechange
+The default option: colour changes every slide.
+
+framechange
+Colour changes every frame.
+
 %------------------------------
 % Other stuff
 %------------------------------
@@ -37,7 +43,6 @@ Currently licensed under GPL v3. http://www.gnu.org/licenses/gpl-3.0.html
 
 To do list
 ----------
-User toggles frame or slide transitions.
 Make sure it works with all base inner/outer themes.
  - smoothbars, split, shadow, tree outer themes uses palette quaternary (b/w)
  - smoothtree doesn't seem to use structure colours at all.

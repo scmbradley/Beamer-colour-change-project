@@ -17,20 +17,32 @@ These should be colours already understood by beamer.
 Beamer uses xcolor, so you can define colours with xcolor commands and then use them in \selectcolourchanges.
 That's what I do for the defaults.
 
+\selectmanualcolour{colour}
+Changes the structure colour.
+Use between frames.
+Can't guarantee this won't do weird stuff if you also have slidechange or framechange on.
+
+Both commands also come with an american spelling version.
+\selectcolorchanges and \selectmanualcolor are defined to be the same as the above two commands.
 %------------------------------
 % Summary of options
 %------------------------------
 
 defaultstyle
 Turns on default inner and outerthemes.
-Or rather, it will do soo.
+Or rather, it will do soon.
+That is, it turns on my favourite version of the theme, not the "beamer default" ones.
+This is just a shortcut for:
+\useoutertheme[footline=authorinstitutetitle]{miniframes}
+\useinnertheme{rectangles}
+Simple.
 
 draft
 The draft option turns off colour changing.
 Good for speeding up compilation when drafting.
 
 slidechange
-The default option: colour changes every slide.
+Colour changes every slide.
 
 framechange
 Colour changes every frame.

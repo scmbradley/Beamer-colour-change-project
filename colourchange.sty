@@ -17,10 +17,7 @@
 \newif\ifcc@draft
 \newif\ifcc@final
 
-%By default, this should be true
-
-\cc@slidechangetrue
-
+% The default behaviour is "do nothing"
 
 \DeclareOption{defaultstyle}{%
 \cc@defaultstyletrue%
@@ -71,6 +68,16 @@
 \setbeamercolor*{block title}{bg=structure.fg,fg=white}
 \setbeamercolor*{block body}{bg=structure.fg!50!white}
 }
+
+%------------------------------
+% Manual change command
+%------------------------------
+
+\newcommand\selectmanualcolour[1]{%
+  \setbeamercolor{structure}{fg=#1}%
+}
+
+\let\selectmanualcolor\selectmanualcolour
 
 % All the work is bascially done by a few counters
 % Some are for with the slidechange option, and some for the frame change option
@@ -131,7 +138,7 @@
 \newcommand\selectcolourchanges[2]{%
   \def\first@colour{#1}%
   \def\second@colour{#2}}
-
+\let\selectcolorchanges\selectcolourchanges
 
 % At the beginning of the document, we need to set the colours up for the first time...
 

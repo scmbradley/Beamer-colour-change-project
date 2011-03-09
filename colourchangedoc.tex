@@ -1,4 +1,13 @@
 \documentclass{scrartcl}
+ %Warning: I use a modified vc script so this will not compile unless you remove the \GITTag from the footer or download the modified version from my website.
+\immediate\write18{./vc}
+\input{vc}
+\usepackage{scrpage2}
+\pagestyle{scrheadings}
+\setkomafont{pagefoot}{\small\normalfont\sffamily}
+\ifoot[\VCDateISO\GITTag]{\VCDateISO\GITTag}
+\ofoot[\GITAbrHash]{\GITAbrHash}
+
 \usepackage{url}
 \author{Seamus Bradley}
 
@@ -20,7 +29,8 @@
 \maketitle
 
 \begin{center}
-  \small \url{tex@seamusbradley.net}
+  \small \url{tex@seamusbradley.net}\\
+  \url{http://www.seamusbradley.net/tex.php}
 \end{center}
 
 \section{Introduction}
@@ -43,7 +53,7 @@ To set what colours the transition should be between, use: \lstinline+\selectcol
 \section{Usage}
 
 You can pass the option \lstinline+defaultstyle+ to the package, this sets up the structural elements (the inner and outer theme) so that they use the colours.
-Otherwise, you can use Beamer's own \lstinline+\setbeamerinnnertheme+ and \lstinline+\setbeameroutertheme+ to use the themes Beamer defines.\footnote{%
+Otherwise, you can use Beamer's own \lstinline+\useinnnertheme+ and \lstinline+\useoutertheme+ to use the themes Beamer defines.\footnote{%
   Some themes don't work so well yet: smoothbars, split, shadow, tree, smoothtree}
 Call inner and outerthemes separately.
 Some ``all inclusive'' themes call a colour theme themselves and this can lead to only some elements changing colour.

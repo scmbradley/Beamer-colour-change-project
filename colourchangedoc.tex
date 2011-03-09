@@ -1,0 +1,58 @@
+\documentclass{scrartcl}
+\usepackage{url}
+\author{Seamus Bradley}
+
+\title{The colourchange package}
+\usepackage{listings}
+\lstloadlanguages{[LaTeX]TeX} % I need to tell listings how I want code typeset. Here come some options:
+\lstset{% 
+    basicstyle=\ttfamily\small, 
+    commentstyle=\itshape\ttfamily\small, 
+    showspaces=false, 
+    showstringspaces=false, 
+    breaklines=true, 
+    breakautoindent=true, 
+    captionpos=t,
+    frame=single,
+    escapeinside={(*}{*)},
+} 
+\begin{document}
+\maketitle
+
+\begin{center}
+  \small \url{tex@seamusbradley.net}
+\end{center}
+
+\section{Introduction}
+
+The \lstinline+colourchange+ package provides options for changing the colour of beamer's structural elements.
+There are two ways to do this: manual and automatic.
+
+\section{Manual}
+
+The command \lstinline+\selectmanualcolour+ sets the colour to its argument.
+It accepts any named colour understood by \lstinline+xcolor+.
+
+\section{Automatic}
+
+There are two options that automatically change the colour: \lstinline+slidechange+ and \lstinline+framechange+.
+Pass one of these to the package as an option and the colour of the structure will slowly change from one colour to another.
+To set what colours the transition should be between, use: \lstinline+\selectcolourchange{first}{second}+ which makes the colour transition from
+  \lstinline+first+ to \lstinline+second+ over the course of the presentation.
+
+\section{Usage}
+
+You can pass the option \lstinline+defaultstyle+ to the package, this sets up the structural elements (the inner and outer theme) so that they use the colours.
+Otherwise, you can use Beamer's own \lstinline+\setbeamerinnnertheme+ and \lstinline+\setbeameroutertheme+ to use the themes Beamer defines.\footnote{%
+  Some themes don't work so well yet: smoothbars, split, shadow, tree, smoothtree}
+Call inner and outerthemes separately.
+Some ``all inclusive'' themes call a colour theme themselves and this can lead to only some elements changing colour.
+
+Use the \lstinline+draft+ option to turn off the colour transitions.
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

@@ -1,5 +1,8 @@
 This is the README for colourchange.sty.
 
+Changes colour of beamer structural elements (e.g. the bars of outerthemes).
+This is done either manually or automatically.
+
 Don't use a colour theme or full theme (which sometimes call colour themes).
 You should be OK calling inner themes and outer themes separately (although some look better than others at the moment: see bottom of readme).
 You need to compile twice for it to work.

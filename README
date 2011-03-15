@@ -58,6 +58,7 @@ Make sure it works with all base inner/outer themes.
  - smoothbars, split, shadow, tree outer themes uses palette quaternary (b/w)
  - smoothtree doesn't seem to use structure colours at all.
 Check it doesn't hopelessly break article or handout modes
+Make a .dtx
 
 %------------------------------
 % Other stuff

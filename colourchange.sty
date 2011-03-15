@@ -57,7 +57,7 @@
 \setbeamercolor*{palette primary}{use=structure,fg=white,bg=structure.fg}
 \setbeamercolor*{palette secondary}{use=structure,fg=white,bg=structure.fg!75!black}
 \setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=structure.fg!50!black}
-\setbeamercolor*{palette quaternary}{fg=white,bg=black}
+\setbeamercolor*{palette quaternary}{fg=white,bg=structure.fg!80!black}
 \setbeamercolor*{sidebar}{use=structure,bg=structure.fg}
 \setbeamercolor*{palette sidebar primary}{use=structure,fg=structure.fg!10}
 \setbeamercolor*{palette sidebar secondary}{fg=white}
@@ -75,6 +75,7 @@
 
 \newcommand\selectmanualcolour[1]{%
   \setbeamercolor{structure}{fg=#1}%
+  \setcolours
 }
 
 \let\selectmanualcolor\selectmanualcolour

@@ -63,12 +63,17 @@ If you want one of the automatic colourchange options call \lstinline+\usepackag
   \lstinline+\usepackage[framechange]{colourchange}+.
 
 You can pass the option \lstinline+defaultstyle+ to the package, this sets up the structural elements (the inner and outer theme) so that they use the colours.
-Otherwise, you can use Beamer's own \lstinline+\useinnnertheme+ and \lstinline+\useoutertheme+ to use the themes Beamer defines.\footnote{%
-  Some themes don't work so well yet: smoothbars, split, shadow, tree, smoothtree}
-Call inner and outerthemes separately.
+Otherwise, you can use Beamer's own \lstinline+\useinnnertheme+ and \lstinline+\useoutertheme+ to use the themes Beamer defines.
+Call inner and outer themes separately.
 Some ``all inclusive'' themes call a colour theme themselves and this can lead to only some elements changing colour.
 
 Use the \lstinline+draft+ option to turn off the colour transitions.
+
+\section{Known problems}
+
+The \lstinline+smoothbars+ and \lstinline+smoothtrees+ outer themes do some funky stuff with shading and colours, so they aren't currently supported.
+All other outer and inner themes looked alright.
+Testing was, however, pretty basic: not all combinations were tested.
 
 \section{How it works}
 

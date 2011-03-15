@@ -5,47 +5,47 @@
 % http://www.gnu.org/licenses/gpl-3.0.html
 
 %%
-\ProvidesPackage{colourchange}
+\ProvidesPackage{colourchange}[2011/03/15 v1.22]
 \RequirePackage{etoolbox}
 \RequirePackage{calc}
 
 % Some new ifs I use
 
-\newif\ifcc@defaultstyle
-\newif\ifcc@slidechange
-\newif\ifcc@framechange
-\newif\ifcc@draft
-\newif\ifcc@final
+\newif\ifclch@defaultstyle
+\newif\ifclch@slidechange
+\newif\ifclch@framechange
+\newif\ifclch@draft
+\newif\ifclch@final
 
 % The default behaviour is "do nothing"
 
 \DeclareOption{defaultstyle}{%
-\cc@defaultstyletrue%
+\clch@defaultstyletrue%
 }
 
 \DeclareOption{slidechange}{
-\cc@slidechangetrue
-\cc@framechangefalse
+\clch@slidechangetrue
+\clch@framechangefalse
 }
 
 \DeclareOption{framechange}{
-\cc@framechangetrue
-\cc@slidechangefalse
+\clch@framechangetrue
+\clch@slidechangefalse
 }
 
 \DeclareOption{draft}{
-\cc@drafttrue
+\clch@drafttrue
 }
 
 \DeclareOption{final}{
-\cc@finaltrue
+\clch@finaltrue
 }
 
 \ProcessOptions\relax
 
 % Default option
 
-\ifcc@defaultstyle
+\ifclch@defaultstyle
 \useoutertheme[footline=authorinstitutetitle]{miniframes}
 \useinnertheme{rectangles}
 \fi
@@ -83,39 +83,39 @@
 % Some are for with the slidechange option, and some for the frame change option
 % I'll let you guess which are which.
 
-\newcounter{cc@slidefrac}
-\newcounter{cc@slidetot}
-\newcounter{cc@currslide}
-\setcounter{cc@currslide}{1}
+\newcounter{clch@slidefrac}
+\newcounter{clch@slidetot}
+\newcounter{clch@currslide}
+\setcounter{clch@currslide}{1}
 
-\newcounter{cc@framefrac}
-\newcounter{cc@frametot}
-\newcounter{cc@currframe}
-\setcounter{cc@currframe}{1}
+\newcounter{clch@framefrac}
+\newcounter{clch@frametot}
+\newcounter{clch@currframe}
+\setcounter{clch@currframe}{1}
 
 % At the start of each slide, step the counter, and set the fraction counter
 % Only if the draft mode is off.
-\ifcc@draft
+\ifclch@draft
 \renewcommand\selectmanualcolour[1]{}
 \renewcommand\selectmanualcolor[1]{}
 \else
-\ifcc@slidechange
+\ifclch@slidechange
 
   \newcommand\fractionate{
-    \setcounter{cc@slidetot}{\inserttotalslidenumber}
-    \setcounter{cc@slidefrac}{100 * \value{cc@currslide} / \value{cc@slidetot}}
+    \setcounter{clch@slidetot}{\inserttotalslidenumber}
+    \setcounter{clch@slidefrac}{100 * \value{clch@currslide} / \value{clch@slidetot}}
   }
   
-  \def\beamer@checkframetitle{\stepcounter{cc@currslide}%
+  \def\beamer@checkframetitle{\stepcounter{clch@currslide}%
     \fractionate%
     \@ifnextchar\bgroup\beamer@inlineframetitle{}}
   
   \fi
 
-  \ifcc@framechange
+  \ifclch@framechange
     \newcommand\fractionate{
-      \setcounter{cc@slidetot}{\inserttotalframenumber}
-      \setcounter{cc@slidefrac}{100 * \insertframenumber / \value{cc@slidetot}}
+      \setcounter{clch@slidetot}{\inserttotalframenumber}
+      \setcounter{clch@slidefrac}{100 * \insertframenumber / \value{clch@slidetot}}
     }
 
     \preto\frame{\fractionate\setcolours}
@@ -123,7 +123,7 @@
 \fi
 
 % This command sets the fraction counter for the above command.
-% Why do I have to set cc@slidetot here too? Well, if I put it in \AtBeginDocument, it seems to break...
+% Why do I have to set clch@slidetot here too? Well, if I put it in \AtBeginDocument, it seems to break...
 % \inserttotalslidenumber is defined at the end (lines 61 et seq.)
 
 % The colour setting commands don't like having counter names in them directly, so this workaround is necessary...
@@ -135,7 +135,7 @@
   \setbeamercolor*{structure}{fg=\second@colour!#1!\first@colour}
 }
 
-\newcommand\setstruccolx{\setstruccol{\the\value{cc@slidefrac}}}
+\newcommand\setstruccolx{\setstruccol{\the\value{clch@slidefrac}}}
 
 \newcommand\selectcolourchanges[2]{%
   \def\first@colour{#1}%
@@ -151,5 +151,5 @@
 \def\inserttotalslidenumber{1}
 \AtEndDocument{
       \immediate\write\@auxout{\string\@writefile{nav}%
-        {\noexpand\headcommand{\noexpand\def\noexpand\inserttotalslidenumber{\the\value{cc@currslide}}}}}
+        {\noexpand\headcommand{\noexpand\def\noexpand\inserttotalslidenumber{\the\value{clch@currslide}}}}}
 }

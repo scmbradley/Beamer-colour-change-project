@@ -18,6 +18,7 @@
 \newif\ifclch@final
 
 % The default behaviour is "do nothing"
+% Note that each of framechange and slidechange declares the other one false. So the last option "wins".
 
 \DeclareOption{defaultstyle}{%
 \clch@defaultstyletrue%
